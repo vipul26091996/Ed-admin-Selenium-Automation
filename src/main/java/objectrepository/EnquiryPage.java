@@ -186,7 +186,6 @@ public class EnquiryPage {
 		WebElement enquiryid = driver.findElement(By.xpath("//div[@class='ed-inquiry-list-details-header']/div[2]"));
 		BaseSetup.explicitwait.until(ExpectedConditions.visibilityOf(enquiryid));
 		System.out.println(enquiryid.getText());
-
 	}
 
 	public void selectStatus(String value) {
@@ -194,7 +193,6 @@ public class EnquiryPage {
 				.findElement(By.xpath("//div[@id='Status']//descendant::li[@data-value='" + value + "']"));
 		status_ddn.click();
 		status_value.click();
-
 	}
 
 	public void selectYearofEntry(String value) {
@@ -202,7 +200,6 @@ public class EnquiryPage {
 				.findElement(By.xpath("//div[@id='EntryYear']//descendant::li[@data-value='" + value + "']"));
 		yearofentry_ddn.click();
 		yoe_value.click();
-
 	}
 
 	public void selectSource(String value) {
@@ -210,6 +207,9 @@ public class EnquiryPage {
 				.findElement(By.xpath("//div[@id='RecSource']//descendant::li[@data-value=" + value + "]"));
 		source_ddn.click();
 		source_value.click();
+	}
+
+	public void verifyinDB() {
 
 	}
 

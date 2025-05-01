@@ -42,7 +42,12 @@
 			<artifactId>webdrivermanager</artifactId>
 			<version>5.9.3</version>
 		</dependency>
-
-
+		<!-- https://mvnrepository.com/artifact/com.microsoft.sqlserver/mssql-jdbc -->
+		<dependency>
+			<groupId>com.microsoft.sqlserver</groupId>
+			<artifactId>mssql-jdbc</artifactId>
+			<version>12.10.0.jre11</version>
+			<scope>compile</scope>
+		</dependency>
 	</dependencies>
 </project>
