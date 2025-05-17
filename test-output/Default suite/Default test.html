@@ -57,9 +57,9 @@ function toggleAllBoxes() {
 <tr>
 <td>Tests passed/Failed/Skipped:</td><td>0/1/0</td>
 </tr><tr>
-<td>Started on:</td><td>Thu May 01 10:45:10 IST 2025</td>
+<td>Started on:</td><td>Fri May 16 18:22:02 IST 2025</td>
 </tr>
-<tr><td>Total time:</td><td>0 seconds (287 ms)</td>
+<tr><td>Total time:</td><td>18 seconds (18810 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -75,20 +75,12 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='utilities.DBUtils.connectToDB()'><b>connectToDB</b><br>Test class: utilities.DBUtils</td>
-<td><div><pre>com.microsoft.sqlserver.jdbc.SQLServerException: The TCP/IP connection to the host testsites-rds.cyjzqj3uozc1.eu-west-1.rds.amazonaws.com,21433, port 1433 has failed. Error: &quot;testsites-rds.cyjzqj3uozc1.eu-west-1.rds.amazonaws.com,21433. Verify the connection properties. Make sure that an instance of SQL Server is running on the host and accepting TCP/IP connections at the port. Make sure that TCP connections to the port are not blocked by a firewall.&quot;.
-	at com.microsoft.sqlserver.jdbc.SQLServerException.makeFromDriverError(SQLServerException.java:248)
-	at com.microsoft.sqlserver.jdbc.SQLServerException.convertConnectExceptionToSQLServerException(SQLServerException.java:314)
-	at com.microsoft.sqlserver.jdbc.SocketFinder.findSocket(IOBuffer.java:2593)
-	at com.microsoft.sqlserver.jdbc.TDSChannel.open(IOBuffer.java:721)
-	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connectHelper(SQLServerConnection.java:4073)
-	at com.microsoft.sqlserver.jdbc.SQLServerConnection.login(SQLServerConnection.java:3690)
-	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connectInternal(SQLServerConnection.java:3499)
-	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connect(SQLServerConnection.java:2207)
-	at com.microsoft.sqlserver.jdbc.SQLServerDriver.connect(SQLServerDriver.java:1320)
-	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:681)
-	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:229)
-	at utilities.DBUtils.connectToDB(DBUtils.java:19)
+<td title='testfile.CommunicationsTest.sendNotifications()'><b>sendNotifications</b><br>Test class: testfile.CommunicationsTest</td>
+<td><div><pre>java.util.NoSuchElementException
+	at java.base/java.util.LinkedHashMap$LinkedHashIterator.nextNode(LinkedHashMap.java:758)
+	at java.base/java.util.LinkedHashMap$LinkedKeyIterator.next(LinkedHashMap.java:778)
+	at objectrepository.CommunicationsPage.switchToWindow(CommunicationsPage.java:114)
+	at testfile.CommunicationsTest.sendNotifications(CommunicationsTest.java:54)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -117,20 +109,12 @@ function toggleAllBoxes() {
 	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-</pre></div><a href='#' onClick='toggleBox("stack-trace1180244251", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace1180244251'><pre>com.microsoft.sqlserver.jdbc.SQLServerException: The TCP/IP connection to the host testsites-rds.cyjzqj3uozc1.eu-west-1.rds.amazonaws.com,21433, port 1433 has failed. Error: &quot;testsites-rds.cyjzqj3uozc1.eu-west-1.rds.amazonaws.com,21433. Verify the connection properties. Make sure that an instance of SQL Server is running on the host and accepting TCP/IP connections at the port. Make sure that TCP connections to the port are not blocked by a firewall.&quot;.
-	at com.microsoft.sqlserver.jdbc.SQLServerException.makeFromDriverError(SQLServerException.java:248)
-	at com.microsoft.sqlserver.jdbc.SQLServerException.convertConnectExceptionToSQLServerException(SQLServerException.java:314)
-	at com.microsoft.sqlserver.jdbc.SocketFinder.findSocket(IOBuffer.java:2593)
-	at com.microsoft.sqlserver.jdbc.TDSChannel.open(IOBuffer.java:721)
-	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connectHelper(SQLServerConnection.java:4073)
-	at com.microsoft.sqlserver.jdbc.SQLServerConnection.login(SQLServerConnection.java:3690)
-	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connectInternal(SQLServerConnection.java:3499)
-	at com.microsoft.sqlserver.jdbc.SQLServerConnection.connect(SQLServerConnection.java:2207)
-	at com.microsoft.sqlserver.jdbc.SQLServerDriver.connect(SQLServerDriver.java:1320)
-	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:681)
-	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:229)
-	at utilities.DBUtils.connectToDB(DBUtils.java:19)
+</pre></div><a href='#' onClick='toggleBox("stack-trace489047267", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace489047267'><pre>java.util.NoSuchElementException
+	at java.base/java.util.LinkedHashMap$LinkedHashIterator.nextNode(LinkedHashMap.java:758)
+	at java.base/java.util.LinkedHashMap$LinkedKeyIterator.next(LinkedHashMap.java:778)
+	at objectrepository.CommunicationsPage.switchToWindow(CommunicationsPage.java:114)
+	at testfile.CommunicationsTest.sendNotifications(CommunicationsTest.java:54)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -160,8 +144,8 @@ function toggleAllBoxes() {
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
 </pre></div></td>
-<td>0</td>
-<td>utilities.DBUtils@c267ef4</td></tr>
+<td>11</td>
+<td>testfile.CommunicationsTest@7334aada</td></tr>
 </table><p>
 </body>
 </html>

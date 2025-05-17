@@ -28,7 +28,9 @@ public class EnquiryTest extends BaseSetup {
 
 	@Test
 	public void addEnquiry() throws InterruptedException, AWTException {
+		String enquiry_id;
 		login_helper.doStaffValidLogin();
+		enquiry_page.acceptAlert();
 		enquiry_page.selectEnquiryTab();
 		enquiry_page.clickonNewEnquiryBtn();
 		enquiry_page.switchtoEnquiryDetailsFrame();
@@ -44,8 +46,20 @@ public class EnquiryTest extends BaseSetup {
 		enquiry_page.selectSource(prop.getProperty("source"));
 		enquiry_page.fillNotes(prop.getProperty("notes"));
 		enquiry_page.switchtoParentFrame();
-		enquiry_page.clickonSaveBtn();
+		enquiry_id = enquiry_page.clickonSaveBtn();
+		enquiry_page.verifyNewEnquiry(enquiry_id);
+		// enquiry_page.verifyinDB(enquiry_id);
 
+	}
+
+	@Test
+	public void verifyNewRecord() throws Exception {
+		login_helper.doStaffValidLogin();
+		enquiry_page.acceptAlert();
+		enquiry_page.selectEnquiryTab();
+		enquiry_page.verifyNewEnquiry("23");
+		// enquiry_page.verifyinDB("23");
+		
 	}
 
 }

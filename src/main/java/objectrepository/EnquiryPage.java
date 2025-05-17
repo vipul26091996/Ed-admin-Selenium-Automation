@@ -1,5 +1,9 @@
 package objectrepository;
 
+import java.sql.ResultSet;
+import java.util.NoSuchElementException;
+
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -9,6 +13,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 
 import base.BaseSetup;
+import utilities.DBUtils;
 
 public class EnquiryPage {
 
@@ -72,6 +77,9 @@ public class EnquiryPage {
 
 	@FindBy(id = "deleteButton")
 	WebElement delete_btn;
+
+	@FindBy(id = "inquiryListFrame")
+	WebElement enquiryListFrame;
 
 	public EnquiryPage(WebDriver driver) {
 		this.driver = driver;
@@ -180,12 +188,18 @@ public class EnquiryPage {
 		delete_btn.click();
 	}
 
-	public void clickonSaveBtn() {
+	public String clickonSaveBtn() {
 		save_btn.click();
 		driver.switchTo().frame(enquiry_detailsframe);
 		WebElement enquiryid = driver.findElement(By.xpath("//div[@class='ed-inquiry-list-details-header']/div[2]"));
 		BaseSetup.explicitwait.until(ExpectedConditions.visibilityOf(enquiryid));
-		System.out.println(enquiryid.getText());
+		String id = enquiryid.getText();
+		System.out.println(id);
+		String[] idpart = id.split(": ");
+		String idstr = idpart[1].trim();
+		System.out.println(idstr);
+		return idstr;
+
 	}
 
 	public void selectStatus(String value) {
@@ -209,8 +223,64 @@ public class EnquiryPage {
 		source_value.click();
 	}
 
-	public void verifyinDB() {
+	public void verifyinDB(String id) {
+		DBUtils.connectToDB();
+		ResultSet rs = DBUtils.executeQuery("Select * from where Inquiry where InquiryID = " + id);
+		try {
+			String value = rs.getString(2);
+			System.out.println(value);
+		} catch (Exception t) {
+			t.getMessage();
+		}
+		DBUtils.closeConnection();
+	}
+
+	public void verifyNewEnquiry(String id) {
+		driver.switchTo().defaultContent();
+		int pagecount = 2;
+		boolean recordfound = false;
+		driver.switchTo().frame(enquiryListFrame);
+
+		while (recordfound == false) {
+			try {
+				By rowLocator = By.xpath("//tr[contains(@id,'ROW" + id + "')]");
+				BaseSetup.explicitwait.until(ExpectedConditions.visibilityOfElementLocated(rowLocator));
+				recordfound = true;
+				System.out.println("Record added sccessfully");
+				break;
+
+			} catch (Exception e) {
+
+			}
+
+			try {
+				By nextPageLocator = By
+						.xpath("//a[contains(@onclick,'Page(" + pagecount + ")') and text()='" + pagecount + "']");
+				WebElement nextPageBtn = BaseSetup.explicitwait
+						.until(ExpectedConditions.elementToBeClickable(nextPageLocator));
+				nextPageBtn.click();
+				pagecount++;
+
+			} catch (Exception e1) {
+				System.out.println("Record not Found after checking all pages");
+				break;
+			}
+		}
+		if (!recordfound) {
+			throw new NoSuchElementException("Enquiry record with ID " + id + " not found.");
+		}
 
 	}
 
+	public void acceptAlert() {
+		try {
+			Alert myalert = BaseSetup.explicitwait.until(ExpectedConditions.alertIsPresent());
+			if (myalert != null) {
+				myalert = driver.switchTo().alert();
+				myalert.getText();
+				myalert.accept();
+			}
+		} catch (Exception e) {
+		}
+	}
 }

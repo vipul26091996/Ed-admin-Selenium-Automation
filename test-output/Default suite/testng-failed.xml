@@ -3,11 +3,14 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="utilities.DBUtils">
+      <class name="testfile.CommunicationsTest">
         <methods>
-          <include name="connectToDB"/>
+          <include name="setup"/>
+          <include name="sendNotifications"/>
+          <include name="tearDown"/>
+          <include name="init"/>
         </methods>
-      </class> <!-- utilities.DBUtils -->
+      </class> <!-- testfile.CommunicationsTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

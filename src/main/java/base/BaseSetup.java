@@ -45,8 +45,8 @@ public class BaseSetup {
 			driver = new FirefoxDriver();
 		}
 		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(Duration.ofMinutes(2));
-		explicitwait = new WebDriverWait(driver, Duration.ofMinutes(2));
+		driver.manage().timeouts().implicitlyWait(Duration.ofMinutes(1));
+		explicitwait = new WebDriverWait(driver, Duration.ofMinutes(1));
 		driver.get(setupprop.getProperty("url"));
 		System.out.println("Base Setup Successful");
 

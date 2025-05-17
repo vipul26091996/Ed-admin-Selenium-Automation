@@ -2,6 +2,7 @@ package utilities;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -15,9 +16,9 @@ public class DBUtils {
 
 	public static void connectToDB() {
 		try {
-			String url = "jdbc:sqlserver://localhost:1433;databaseName=yourDatabaseName";
-			String username = "yourUsername";
-			String password = "yourPassword";
+			String url = "jdbc:sqlserver://testsites-rds.cyjzqj3uozc1.eu-west-1.rds.amazonaws.com:1433;databaseName=ea-testsite3";
+			String username = "Ashish";
+			String password = "(swGe4*A19{";
 
 			connection = DriverManager.getConnection(url, username, password);
 			System.out.println("Connected to Database Successfully!");
@@ -28,8 +29,17 @@ public class DBUtils {
 
 	public static ResultSet executeQuery(String query) {
 		try {
+
+			/// Statement like writing a letter by hand every time.
 			statement = connection.createStatement();
 			resultSet = statement.executeQuery(query);
+
+			/// PreparedStatement like using a pre-printed template where you just fill in
+			/// the blanks.
+//			PreparedStatement pstmt = connection.prepareStatement("Select * from Inquiry where InquiryId = ?");
+//			pstmt.setString(1, "1");
+//			pstmt.executeQuery();
+
 		} catch (Exception e) {
 			System.out.println("Query execution failed: " + e.getMessage());
 		}
