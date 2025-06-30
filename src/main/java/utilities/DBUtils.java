@@ -34,8 +34,8 @@ public class DBUtils {
 			statement = connection.createStatement();
 			resultSet = statement.executeQuery(query);
 
-			/// PreparedStatement like using a pre-printed template where you just fill in
-			/// the blanks.
+/// 		PreparedStatement like using a pre-printed template where you just fill in the blanks.
+
 //			PreparedStatement pstmt = connection.prepareStatement("Select * from Inquiry where InquiryId = ?");
 //			pstmt.setString(1, "1");
 //			pstmt.executeQuery();

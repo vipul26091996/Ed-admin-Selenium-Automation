@@ -36,24 +36,25 @@ public class CommunicationsTest extends BaseSetup {
 	@Test
 	public void sendNotifications() throws InterruptedException {
 		login_helper.doStaffValidLogin();
-		comm_page.openCommunicationsTab();
+		login_helper.openModule("Communications");
+		//comm_page.openCommunicationsTab();
 		comm_page.clickonBreadcrumbMenu();
 		comm_page.selectNotifications();
 		comm_page.clickOnNewNotificationBtn();
 		comm_page.switchToWindow("child");
-		comm_page.selectCategory("emergency");
+		comm_page.selectCategory("general");
 		comm_page.fillNotificationSubject(prop.getProperty("Subject"));
 		comm_page.fillNotificationDetails(prop.getProperty("Details"));
 		comm_page.clickOnNextBtn();
 		comm_page.selectAcademic();
-		comm_page.selectStaffAudience();
+		//comm_page.selectStaffAudience();
+		 comm_page.selectStudentsAudience();
 		comm_page.clickOnNextBtn();
-		// comm_page.clickOnSendNotificationBtn();
-		// comm_page.acceptSendNotificationAlert();
+		comm_page.clickOnSendNotificationBtn();
+		comm_page.acceptSendNotificationAlert();
 		comm_page.clickOnCloseBtn();
-		comm_page.switchToWindow("parent");
-		comm_page.clickonBreadcrumbMenu();
-
+		// comm_page.switchToWindow("parent");
+		// comm_page.clickonBreadcrumbMenu();
 		Thread.sleep(20000);
 	}
 }

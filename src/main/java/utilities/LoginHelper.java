@@ -3,6 +3,8 @@ package utilities;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Properties;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
@@ -30,5 +32,14 @@ public class LoginHelper {
 		login_page.clickLogin();
 		BaseSetup.explicitwait.until(ExpectedConditions.titleIs("Dashboard"));
 		Assert.assertEquals(driver.getTitle(), "Dashboard", "Staff login should redirect to Dashboard");
+	}
+
+	public void openModule(String module_name) {
+		try {
+			driver.findElement(By.xpath("(//*[@title='" + module_name + "'])[1]//parent::a")).click();
+		} catch (Exception e) {
+			driver.findElement(By.id("moreButton")).click();
+			driver.findElement(By.xpath("(//*[@title='" + module_name + "'])[2]//parent::a")).click();
+		}
 	}
 }

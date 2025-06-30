@@ -3,8 +3,13 @@ package testfile;
 import java.awt.AWTException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.List;
 import java.util.Properties;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import base.BaseSetup;
@@ -59,7 +64,32 @@ public class EnquiryTest extends BaseSetup {
 		enquiry_page.selectEnquiryTab();
 		enquiry_page.verifyNewEnquiry("23");
 		// enquiry_page.verifyinDB("23");
-		
+
+	}
+
+	@Test
+	@SuppressWarnings("deprecation")
+	public void demo() {
+		driver.get("https://practice-automation.com/");
+		List<WebElement> list = driver.findElements(By.tagName("a"));
+		System.out.println(list.size());
+		try {
+			for (WebElement listelement : list) {
+				String href = listelement.getAttribute("href");
+				if (href == null || href.isEmpty()) {
+					System.out.println("Blank link");
+					continue;
+				}
+				URL url = new URL(href);
+				HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+				conn.connect();
+				if (conn.getResponseCode() >= 400) {
+					System.out.println(href + " = broken link");
+				}
+			}
+		} catch (Exception e) {
+
+		}
 	}
 
 }
