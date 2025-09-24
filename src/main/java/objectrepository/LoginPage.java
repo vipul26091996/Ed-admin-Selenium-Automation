@@ -74,6 +74,12 @@ public class LoginPage {
 
 	@FindBy(id = "Pass4")
 	WebElement alumnipwd_txtbox;
+	
+	@FindBy(id="//img[@title='More']")
+	WebElement more_icon;
+	
+	@FindBy(id="//div[@title='Log Out']")
+	WebElement logout_text;
 
 	public LoginPage(WebDriver driver) {
 		this.driver = driver;
@@ -109,5 +115,15 @@ public class LoginPage {
 		} catch (Exception e) {
 			System.out.println("login try catch error");
 		}
+	}
+	
+	public void clickMoreIcon()
+	{
+		more_icon.click();
+	}
+	 
+	public void clickOnLogOut()
+	{
+		logout_text.click();
 	}
 }

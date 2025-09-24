@@ -8,10 +8,14 @@ import java.util.Properties;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.ITestContext;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Parameters;
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class BaseSetup {
@@ -21,8 +25,8 @@ public class BaseSetup {
 	public static WebDriverWait explicitwait;
 
 	@BeforeClass
-	public static void setup() throws IOException {
-
+	//@Parameters({"browser"})
+	public static void setup(ITestContext context) throws IOException {
 		if (driver == null) {
 			setupfr = new FileReader(
 					System.getProperty("user.dir") + "\\src\\main\\resources\\PropertyFile\\basesetup.properties");
@@ -43,19 +47,23 @@ public class BaseSetup {
 		} else if (setupprop.getProperty("browser").equalsIgnoreCase("Firefox")) {
 			WebDriverManager.firefoxdriver().setup();
 			driver = new FirefoxDriver();
+		} else if (setupprop.getProperty("browser").equalsIgnoreCase("edge")) {
+			WebDriverManager.edgedriver().setup();
+			driver = new EdgeDriver();
 		}
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(Duration.ofMinutes(1));
 		explicitwait = new WebDriverWait(driver, Duration.ofMinutes(1));
-		driver.get(setupprop.getProperty("url"));
-		System.out.println("Base Setup Successful");
-
+		//driver.get(setupprop.getProperty("url"));
+		context.setAttribute("WebDriver", driver);
+		System.out.println("Driver setup : " + driver);
+		System.out.println("Base Setup Successfull");
 	}
 
 	@AfterClass
 	public static void tearDown() {
 		driver.quit();
-		System.out.print("Tear Down Successful");
+		System.out.println("Tear Down Successfull");
 	}
 
 }

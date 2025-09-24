@@ -23,7 +23,7 @@ public class EnquiryPage {
 
 	@FindBy(xpath = "(//*[@title='Enquiry'])[1]//parent::a")
 	WebElement enquiry_tab;
-
+	
 	@FindBy(xpath = "//button[.//span[@title='New Enquiry']]")
 	WebElement newenquiry_btn;
 
@@ -116,7 +116,7 @@ public class EnquiryPage {
 //			}
 //		}
 //		throw new RuntimeException("New Enquiry Element not clickable after retries");
-		Thread.sleep(2000);
+		//Thread.sleep(2000);
 		int i = 1;
 		do {
 			try {
@@ -137,7 +137,7 @@ public class EnquiryPage {
 				driver.switchTo().parentFrame();
 			}
 			i++;
-		} while (i <= 10);
+		} while (i <= 3);
 
 	}
 
@@ -195,7 +195,7 @@ public class EnquiryPage {
 		BaseSetup.explicitwait.until(ExpectedConditions.visibilityOf(enquiryid));
 		String id = enquiryid.getText();
 		System.out.println(id);
-		String[] idpart = id.split(": ");
+		String[] idpart = id.split(":");
 		String idstr = idpart[1].trim();
 		System.out.println(idstr);
 		return idstr;

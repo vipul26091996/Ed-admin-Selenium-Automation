@@ -10,6 +10,7 @@ import java.util.Properties;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.testng.SkipException;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import base.BaseSetup;
@@ -31,7 +32,7 @@ public class EnquiryTest extends BaseSetup {
 		prop.load(fr);
 	}
 
-	@Test
+	@Test(priority=1)
 	public void addEnquiry() throws InterruptedException, AWTException {
 		String enquiry_id;
 		login_helper.doStaffValidLogin();
@@ -57,7 +58,7 @@ public class EnquiryTest extends BaseSetup {
 
 	}
 
-	@Test
+	@Test(priority=2)
 	public void verifyNewRecord() throws Exception {
 		login_helper.doStaffValidLogin();
 		enquiry_page.acceptAlert();
@@ -67,7 +68,7 @@ public class EnquiryTest extends BaseSetup {
 
 	}
 
-	@Test
+	@Test(priority=3)
 	@SuppressWarnings("deprecation")
 	public void demo() {
 		driver.get("https://practice-automation.com/");
@@ -90,6 +91,7 @@ public class EnquiryTest extends BaseSetup {
 		} catch (Exception e) {
 
 		}
+		throw new SkipException("Skipping due to missing config");
 	}
 
 }

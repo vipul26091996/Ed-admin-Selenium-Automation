@@ -26,6 +26,7 @@ public class LoginHelper {
 	}
 
 	public void doStaffValidLogin() throws InterruptedException {
+		driver.get(prop.getProperty("autotesturl"));
 		login_page.selectStaffTab();
 		login_page.enterUserID(prop.getProperty("staffuserid"));
 		login_page.enterPassword(prop.getProperty("staffpwd"));
@@ -41,5 +42,10 @@ public class LoginHelper {
 			driver.findElement(By.id("moreButton")).click();
 			driver.findElement(By.xpath("(//*[@title='" + module_name + "'])[2]//parent::a")).click();
 		}
+	}
+
+	public void logOut() {
+		login_page.clickMoreIcon();
+		login_page.clickOnLogOut();
 	}
 }

@@ -3,6 +3,9 @@ package testfile;
 import java.io.IOException;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+
+import com.aventstack.extentreports.util.Assert;
+
 import base.BaseSetup;
 import utilities.LoginHelper;
 
@@ -32,7 +35,6 @@ public class StaffLoginTest extends BaseSetup {
 //		Assert.assertEquals(driver.getTitle(), "Dashboard", "Staff login should redirect to Dashboard");
 		try {
 			login_helper.doStaffValidLogin();
-			Thread.sleep(20000);
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 		}

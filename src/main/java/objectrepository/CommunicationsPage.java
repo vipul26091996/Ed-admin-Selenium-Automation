@@ -81,10 +81,14 @@ public class CommunicationsPage {
 
 	public void openCommunicationsTab() {
 		try {
-			driver.findElement(By.xpath("(//*[@title='Communications'])[1]//parent::a")).click();
+			try {
+				driver.findElement(By.xpath("(//*[@title='Communications'])[1]//parent::a")).click();
+			} catch (Exception e) {
+				moreicon.click();
+				driver.findElement(By.xpath("(//*[@title='Communications'])[2]//parent::a")).click();
+			}
 		} catch (Exception e) {
-			moreicon.click();
-			driver.findElement(By.xpath("(//*[@title='Communications'])[2]//parent::a")).click();
+			e.getMessage();
 		}
 	}
 
